@@ -14,7 +14,7 @@ A script to download question / exam from Bimasoft's Aplikasi Simulasi Mandiri
 - Anonymous (excluding web server access log)
 - Automatic download to html page
 - Skipping empty or already existing file
-- Support Aplikasi Simulasi Mandiri v12.0 + (Not tested on v13)
+- Support Aplikasi Simulasi Mandiri v12.0 + (Tested on #13.9.0)
 
 
 ## Installation
